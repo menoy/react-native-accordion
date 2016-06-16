@@ -7,7 +7,8 @@ import {
   StyleSheet,
   TouchableHighlight,
   View,
-  Text
+  Text,
+  Platform,
 } from 'react-native';
 
 var Accordion = React.createClass({
@@ -110,9 +111,10 @@ var Accordion = React.createClass({
           style={{
             height: this.getTweeningValue('height')
           }}
+          onLayout={()=>{}}
         >
-          <View ref="AccordionContent">
-            {this.props.content}
+          <View ref="AccordionContent" onLayout={()=>{}}>
+             {(Platform.OS === 'ios' || this.state.is_visible) ? this.props.content : null}
           </View>
         </View>
       </View>
